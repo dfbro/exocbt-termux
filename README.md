@@ -1,5 +1,5 @@
 # Ekstraordinary CBT di Termux
-Instalasi Ekstraordinary CBT di termux tanpa VPS
+Instalasi [Ekstraordinary CBT](https://ekstraordinary.com/) di termux tanpa VPS
 
 ## Instalasi
 
