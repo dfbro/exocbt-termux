@@ -4,6 +4,7 @@ Instalasi Ekstraordinary CBT di termux tanpa VPS
 ## Instalasi
 
 Simpel, hanya perlu:
+
 ```curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/setup.sh | bash```
 
 ## Credit
