@@ -17,9 +17,9 @@ curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/se
 
 ## Bug
 
-Bug ini adalah zona waktu, terdeteksi bahws zona waktu berada di UTC jadi saat membuat jadwal maka harus dikurang 7 jam
+Bug ini adalah zona waktu, terdeteksi bahwa zona waktu berada di UTC jadi saat membuat jadwal maka harus dikurang 7 jam
 
-contoh: ada ujian jam 09:00 maka di jadwal harus menjadi 02:00
+contoh: ada ujian jam 09:13 maka di jadwal harus menjadi 02:13
 
 
 ## Credit
