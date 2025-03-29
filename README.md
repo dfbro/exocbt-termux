@@ -20,6 +20,7 @@ curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/se
 Bug ini adalah zona waktu, terdeteksi bahwa zona waktu berada di UTC jadi saat membuat jadwal maka harus dikurang 7 jam
 
 contoh pertama: ada ujian jam 09:13 maka jadwal harus menjadi 02:13
+
 contoh kedua: ada ujian pada tangga 2 april 2025 pada jam 06:30 maka jadwal harus menjadi tanggal 1 april 2025 jam 23:30
 
 ## Credit
