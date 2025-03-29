@@ -18,6 +18,8 @@ if ! nc -z -u -w1 ::1 53; then
     exit 1
 fi
 
+clear
+
 if [[ ! -f "$ENV_FILE" ]]; then
     echo "Error: tidak ditemukan .env di $ENV_FILE"
     echo "Pastikan Ekstraordinary CBT telah dipasang"
