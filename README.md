@@ -15,6 +15,13 @@ apt update && apt install curl -y
 curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/setup.sh | bash
 ```
 
+## Bug
+
+Bug ini adalah zona waktu, terdeteksi bahws zona waktu berada di UTC jadi saat membuat jadwal maka harus dikurang 7 jam
+
+contoh: ada ujian jam 09:00 maka di jadwal harus menjadi 02:00
+
+
 ## Credit
 
 1. [Shellrean Developer](https://github.com/shellrean-dev)
