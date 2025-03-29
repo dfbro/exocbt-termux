@@ -1,7 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 cleanup() {
-    clear
     pg_ctl -D ./database stop > /dev/null 2>&1
     echo "Server telah berhenti"
     exit 0  # Exit with success
@@ -48,4 +47,3 @@ echo " "
 pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
 trap cleanup SIGINT SIGTERM EXIT
 qemu-x86_64 ./main-amd64
-cleanup
