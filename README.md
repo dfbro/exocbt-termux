@@ -1,4 +1,4 @@
-# Ekstraordinary CBT di Termux
+# Ekstraordinary CBT 4 Rosetta di Termux
 Instalasi [Ekstraordinary CBT](https://ekstraordinary.com/) di termux tanpa VPS
 
 ## Instalasi
