@@ -1,5 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+cleanup() {
+    clear
+    pg_ctl -D ./database stop > /dev/null 2>&1
+    echo "Server telah berhenti"
+    exit 0  # Exit with success
+}
+
+trap cleanup SIGINT
+
 ENV_FILE="./cbt/.env"
 KEY="SERVER_SECRET_LICENSE_KEY"
 
@@ -35,5 +44,6 @@ echo "Tekan Ctrl + C untuk mematikan server"
 cd cbt
 echo " "
 pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
+trap cleanup SIGINT SIGTERM EXIT
 qemu-x86_64 ./main-amd64
-pg_ctl -D ./database stop > /dev/null 2>&1
+cleanup
