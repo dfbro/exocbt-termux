@@ -29,6 +29,6 @@ pg_ctl -D ./cbt/database stop
 clear
 ## sentuhan terakhir
 sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
-wget
+wget https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/startexo
 chmod +x ./startexo
-echo "ketik ./startexo untuk menjalankan Ektraordinary CBT"
+echo "ketik ./startexo lalu enter untuk menjalankan Ekstraordinary CBT"
