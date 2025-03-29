@@ -31,4 +31,5 @@ clear
 sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
 wget https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/startexo
 chmod +x ./startexo
+chmod +x ./cbt/main-amd64
 echo "ketik ./startexo lalu enter untuk menjalankan Ekstraordinary CBT"
