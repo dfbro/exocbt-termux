@@ -1,0 +1,39 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+ENV_FILE="./cbt/.env"
+KEY="SERVER_SECRET_LICENSE_KEY"
+
+# Check if DNS is listening on [::1]:53 using nc
+if ! nc -z -u -w1 ::1 53; then
+    echo "Error: DNS tidak aktif di [::]:53, tolong aktifkan hotspot."
+    exit 1
+fi
+
+if [[ ! -f "$ENV_FILE" ]]; then
+    echo "Error: tidak ditemukan .env di $ENV_FILE"
+    echo "Pastikan Ekstraordinary CBT telah dipasang"
+    echo "menggunakan naskah atau script utama"
+    exit 1
+fi
+
+if grep -qE "^$KEY=$|^$KEY=[[:space:]]*$" "$ENV_FILE"; then
+    echo "Error: $KEY belum dikonfigurasi"
+    echo "Dapatkan Lisensi di https://ecosystem.ekstraordinary.com, Lalu"
+    read -p "Masukkan Kunci Lisensi: " VALUE
+    sed -i "s/^$KEY=.*/$KEY=$VALUE/" "$ENV_FILE"
+fi
+echo "Kunci Lisensi telah dipasang."
+echo " "
+echo "================================="
+echo "         Server Berjalan"
+echo "================================="
+echo " "
+echo "Server dapat dikunjungi di localhost:9988"
+echo "Atau [ALAMAT IP LAN]:9988 "
+echo " "
+echo "Tekan Ctrl + C untuk mematikan server"
+cd cbt
+echo " "
+pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
+qemu-x86_64 ./main-amd64
+pg_ctl -D ./database stop > /dev/null 2>&1
