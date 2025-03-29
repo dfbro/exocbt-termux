@@ -1,4 +1,4 @@
-# Ektraordinary di Termux
+# Ekstraordinary di Termux
 Instalasi Ekstraordinary CBT di termux tanpa VPS
 
 ## Instalasi
