@@ -15,6 +15,14 @@ apt update && apt install curl -y
 curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/setup.sh | bash
 ```
 
+## Menjalankan
+
+Setelah instalasi, Ekstraordinary CBT dapat dijalankan dengan menyalakan hotspot, lalu ketik:
+
+```
+./startexo
+```
+
 ## Credit
 
 1. [Shellrean Developer](https://github.com/shellrean-dev)
