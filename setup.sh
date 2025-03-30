@@ -4,7 +4,7 @@ clear
 ## instalasi dependensi: qemu-x86_64, unzip, wget dan postgresql
 echo "instalasi dependensi"
 apt update
-apt install -y qemu-user-x86-64 unzip postgresql wget
+apt install -y qemu-user-x86-64 unzip postgresql wget tar gzip
 
 clear
 ## download exo cbt 4.5.0 dan inisialisasi folder
@@ -28,6 +28,8 @@ pg_ctl -D ./cbt/database stop
 
 clear
 ## sentuhan terakhir
+mkdir cbt/tzdata
+wget https://github.com/dfbro/exocbt-termux/raw/refs/heads/main/timezone.tar.gz -O cbt/tzdata
 sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
 wget https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/startexo
 chmod +x ./startexo
