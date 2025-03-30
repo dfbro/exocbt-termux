@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 clear
-## instalasi dependensi: qemu-x86_64, unzip, wget dan postgresql
+## instalasi dependensi
 echo "instalasi dependensi"
 apt update
 apt install -y qemu-user-x86-64 unzip postgresql wget tar gzip netcat-openbsd
