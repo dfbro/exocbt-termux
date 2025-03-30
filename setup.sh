@@ -28,7 +28,7 @@ pg_ctl -D ./cbt/database stop
 
 clear
 ## sentuhan terakhir
-mkdir cbt/tzdata
+mkdir -p cbt/tzdata
 wget https://github.com/dfbro/exocbt-termux/raw/refs/heads/main/timezone.tar.gz -O tz.tar.gz
 tar -xzf tz.tar.gz -C ./cbt/tzdata
 rm tz.tar.gz
