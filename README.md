@@ -3,7 +3,7 @@ Instalasi [Ekstraordinary CBT](https://ekstraordinary.com/) di termux tanpa VPS
 
 ## PERINGATAN
 
-Dianjurkan untuk download [termux dari F-Droid](https://f-droid.org/en/packages/com.termux/) ataupun [Termux dari rilis GitHub](https://github.com/termux/termux-app/releases) dan bukan dari Google Playstore
+Dianjurkan untuk download [Termux dari F-Droid](https://f-droid.org/en/packages/com.termux/) ataupun [Termux dari rilis GitHub](https://github.com/termux/termux-app/releases) dan bukan dari Google Playstore
 
 ## Instalasi
 
