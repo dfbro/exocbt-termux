@@ -4,7 +4,7 @@ clear
 ## instalasi dependensi
 echo "instalasi dependensi"
 apt update
-apt install -y qemu-user-x86-64 unzip postgresql wget tar gzip netcat-openbsd
+apt install -y qemu-user-x86-64 libdw unzip postgresql wget tar gzip netcat-openbsd
 
 clear
 ## download exo cbt 4.5.0 dan inisialisasi folder
