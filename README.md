@@ -1,6 +1,10 @@
 # Ekstraordinary CBT 4 Rosetta di Termux
 Instalasi [Ekstraordinary CBT](https://ekstraordinary.com/) di termux tanpa VPS
 
+## PERINGATAN
+
+Dianjurkan untuk download [termux dari F-Droid]("https://f-droid.org/en/packages/com.termux/") dan bukan dari Google Playstore
+
 ## Instalasi
 
 1. Update, dan install cURL:
