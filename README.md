@@ -27,6 +27,12 @@ Setelah instalasi, Ekstraordinary CBT dapat dijalankan dengan menyalakan hotspot
 ./startexo
 ```
 
+## Upgrade
+
+```
+curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/upgrade | bash
+```
+
 ## Credit
 
 1. [Shellrean Developer](https://github.com/shellrean-dev)
