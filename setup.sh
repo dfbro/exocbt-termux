@@ -23,7 +23,8 @@ pg_ctl -D ./cbt/database -l ./cbt/database.log start
 createuser -s postgres
 psql -U postgres -c "ALTER USER postgres WITH PASSWORD 'postgres';"
 psql -U postgres -c "CREATE DATABASE exo;"
-psql -U postgres -d exo -f ./cbt/exo-dump-master.sql
+sql=$(ls ./cbt/exo*sql 2>/dev/null | head -n 1)
+psql -U postgres -d exo -f "$sql"
 pg_ctl -D ./cbt/database stop
 
 clear
