@@ -29,6 +29,9 @@ Setelah instalasi, Ekstraordinary CBT dapat dijalankan dengan menyalakan hotspot
 
 ## Upgrade
 
+dari 4.5.0 -> 4.6.0
+
+
 ```
 curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/upgrade | bash
 ```
