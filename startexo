@@ -34,6 +34,8 @@ if grep -qE "^$KEY=$|^$KEY=[[:space:]]*$" "$ENV_FILE"; then
     sed -i "s/^$KEY=.*/$KEY=$VALUE/" "$ENV_FILE"
 fi
 
+sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
+
 echo "Kunci Lisensi telah dipasang."
 echo " "
 echo "================================="
