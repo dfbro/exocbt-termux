@@ -33,6 +33,7 @@ if grep -qE "^$KEY=$|^$KEY=[[:space:]]*$" "$ENV_FILE"; then
     read -p "Masukkan Kunci Lisensi: " VALUE
     sed -i "s/^$KEY=.*/$KEY=$VALUE/" "$ENV_FILE"
 fi
+
 echo "Kunci Lisensi telah dipasang."
 echo " "
 echo "================================="
@@ -47,4 +48,5 @@ cd cbt
 echo " "
 pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
 trap cleanup SIGINT SIGTERM EXIT
+chmod +x ./main-amd64
 qemu-x86_64 -L ./tzdata ./main-amd64
