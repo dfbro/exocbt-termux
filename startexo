@@ -4,15 +4,16 @@ cleanup() {
     clear
     pg_ctl -D ./database stop > /dev/null 2>&1
     echo "Server telah berhenti"
-    exit 0  # Exit with success
+    exit 0
 }
 
 trap cleanup SIGINT
 
 ENV_FILE="./cbt/.env"
 KEY="SERVER_SECRET_LICENSE_KEY"
+KEY_FILE="./cbt/database/.key"
 
-# Check if DNS is listening on [::1]:53 using nc
+# Check if DNS is listening on [::1]:53
 if ! nc -z -u -w1 ::1 53; then
     echo "Error: DNS tidak aktif di [::1]:53, tolong aktifkan hotspot."
     exit 1
@@ -27,27 +28,38 @@ if [[ ! -f "$ENV_FILE" ]]; then
     exit 1
 fi
 
-if grep -qE "^$KEY=$|^$KEY=[[:space:]]*$" "$ENV_FILE"; then
-    echo "Error: $KEY belum dikonfigurasi"
-    echo "Dapatkan Lisensi di https://ecosystem.ekstraordinary.com, Lalu"
+# Ambil lisensi dari file .key jika ada dan tidak kosong
+if [[ -s "$KEY_FILE" ]]; then
+    VALUE=$(<"$KEY_FILE")
+else
+    echo "Kunci lisensi tidak ditemukan atau kosong."
+    echo "Dapatkan Lisensi di https://ecosystem.ekstraordinary.com, lalu"
     read -p "Masukkan Kunci Lisensi: " VALUE
-    sed -i "s/^$KEY=.*/$KEY=$VALUE/" "$ENV_FILE"
+    echo "$VALUE" > "$KEY_FILE"
 fi
 
-sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
+# Perbarui isi ENV_FILE
+if grep -q "^$KEY=" "$ENV_FILE"; then
+    sed -i "s/^$KEY=.*/$KEY=$VALUE/" "$ENV_FILE"
+else
+    echo "$KEY=$VALUE" >> "$ENV_FILE"
+fi
+
+# Set STORAGE_PATH
+sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' "$ENV_FILE"
 
 echo "Kunci Lisensi telah dipasang."
-echo " "
+echo ""
 echo "================================="
 echo "         Server Berjalan"
 echo "================================="
-echo " "
+echo ""
 echo "Server dapat dikunjungi di localhost:9988"
-echo "Atau [ALAMAT IP LAN]:9988 "
-echo " "
+echo "Atau [ALAMAT IP LAN]:9988"
+echo ""
 echo "Tekan Ctrl + C untuk mematikan server"
 cd cbt
-echo " "
+echo ""
 pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
 trap cleanup SIGINT SIGTERM EXIT
 chmod +x ./main-amd64
