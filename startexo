@@ -1,13 +1,10 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 cleanup() {
-    clear
     pg_ctl -D ./database stop > /dev/null 2>&1
     echo "Server telah berhenti"
     exit 0
 }
-
-trap cleanup SIGINT
 
 ENV_FILE="./cbt/.env"
 KEY="SERVER_SECRET_LICENSE_KEY"
