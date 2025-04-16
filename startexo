@@ -4,13 +4,14 @@ cleanup() {
     clear
     pg_ctl -D ./database stop > /dev/null 2>&1
     echo "Server telah berhenti"
-    exit 0  # Exit with success
+    exit 0
 }
 
 trap cleanup SIGINT
 
 ENV_FILE="./cbt/.env"
 KEY="SERVER_SECRET_LICENSE_KEY"
+LICENSE_STORE="database/.license.key"
 
 # Check if DNS is listening on [::1]:53 using nc
 if ! nc -z -u -w1 ::1 53; then
@@ -27,14 +28,33 @@ if [[ ! -f "$ENV_FILE" ]]; then
     exit 1
 fi
 
-if grep -qE "^$KEY=$|^$KEY=[[:space:]]*$" "$ENV_FILE"; then
-    echo "Error: $KEY belum dikonfigurasi"
-    echo "Dapatkan Lisensi di https://ecosystem.ekstraordinary.com, Lalu"
-    read -p "Masukkan Kunci Lisensi: " VALUE
-    sed -i "s/^$KEY=.*/$KEY=$VALUE/" "$ENV_FILE"
+# Get current value of SERVER_SECRET_LICENSE_KEY from .env
+CURRENT_VALUE=$(grep "^$KEY=" "$ENV_FILE" | cut -d '=' -f2-)
+
+if [[ -z "$CURRENT_VALUE" ]]; then
+    # Try reading from license store
+    if [[ -f "$LICENSE_STORE" ]]; then
+        STORED_VALUE=$(<"$LICENSE_STORE")
+    fi
+
+    # If still empty, prompt user
+    if [[ -z "$STORED_VALUE" ]]; then
+        echo "Error: $KEY belum dikonfigurasi"
+        echo "Dapatkan Lisensi di https://ecosystem.ekstraordinary.com, Lalu"
+        read -p "Masukkan Kunci Lisensi: " STORED_VALUE
+        echo "$STORED_VALUE" > "$LICENSE_STORE"
+    fi
+
+    # Update .env with the license key
+    if grep -q "^$KEY=" "$ENV_FILE"; then
+        sed -i "s/^$KEY=.*/$KEY=$STORED_VALUE/" "$ENV_FILE"
+    else
+        echo "$KEY=$STORED_VALUE" >> "$ENV_FILE"
+    fi
 fi
 
-sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
+# Update storage path
+sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' "$ENV_FILE"
 
 echo "Kunci Lisensi telah dipasang."
 echo " "
