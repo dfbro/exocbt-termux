@@ -2,6 +2,7 @@
 echo "memulai upgrade"
 rm ./cbt/up*sql
 wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.1-linux.zip -O cbt.zip
+cp ./cbt/.env ./cbt/.env.bak
 unzip -o cbt.zip -d ./cbt
 rm cbt.zip
 pg_ctl -D ./cbt/database -l ./cbt/database.log start
