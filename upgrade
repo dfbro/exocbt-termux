@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 echo "memulai upgrade"
 rm ./cbt/up*sql
-wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.0-linux+2.zip -O cbt.zip
+wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.1-linux.zip -O cbt.zip
 unzip -o cbt.zip -d ./cbt
 rm cbt.zip
 pg_ctl -D ./cbt/database -l ./cbt/database.log start
