@@ -9,7 +9,7 @@ apt install -y qemu-user-x86-64 libdw unzip postgresql wget tar gzip netcat-open
 clear
 ## download exo cbt dan inisialisasi folder
 echo "Download Ekstraordinary"
-wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.0-linux+2.zip -O cbt.zip
+wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.1-linux.zip -O cbt.zip
 unzip cbt.zip -d ./cbt
 rm cbt.zip
 
