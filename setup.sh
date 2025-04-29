@@ -4,7 +4,8 @@ clear
 ## instalasi dependensi
 echo "instalasi dependensi"
 apt update
-apt install -y qemu-user-x86-64 libdw unzip postgresql wget tar gzip netcat-openbsd
+apt install -y proot proot-distro qemu-user-x86-64 libdw unzip postgresql wget tar gzip netcat-openbsd
+
 
 clear
 ## download exo cbt dan inisialisasi folder
@@ -27,15 +28,17 @@ sql=$(ls ./cbt/exo*sql 2>/dev/null | head -n 1)
 psql -U postgres -d exo -f "$sql"
 pg_ctl -D ./cbt/database stop
 
+## install tzdata
+clear
+pd install alpine
+pd login alpine --isolated -- apk add --update tzdata
+
 clear
 ## sentuhan terakhir
-mkdir -p cbt/tzdata
-wget https://github.com/dfbro/exocbt-termux/raw/refs/heads/main/timezone.tar.gz -O tz.tar.gz
-tar -xzf tz.tar.gz -C ./cbt/tzdata
-rm tz.tar.gz
 sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
 sed -i 's|^SERVER_BEHIND_PROXY=.*|SERVER_BEHIND_PROXY='"true"'|' ./cbt/.env || true
 wget https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/startexo
 chmod +x ./startexo
 chmod +x ./cbt/main-amd64
+chmod +x ./cbt/main-arm64 || true
 echo "ketik ./startexo lalu enter untuk menjalankan Ekstraordinary CBT"
