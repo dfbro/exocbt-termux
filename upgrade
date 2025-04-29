@@ -4,6 +4,8 @@ rm ./cbt/up*sql
 wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.1-linux.zip -O cbt.zip
 cp ./cbt/.env ./cbt/.env.bak
 unzip -o cbt.zip -d ./cbt
+awk -F= '!a[$1]++' ./cbt/.env.bak ./cbt/.env > ./cbt/.env.merged
+mv ./cbt/.env.merged ./cbt/.env
 rm cbt.zip
 pg_ctl -D ./cbt/database -l ./cbt/database.log start
 sql=$(ls ./cbt/up*sql 2>/dev/null | head -n 1)
