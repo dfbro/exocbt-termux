@@ -34,7 +34,7 @@ wget https://github.com/dfbro/exocbt-termux/raw/refs/heads/main/timezone.tar.gz 
 tar -xzf tz.tar.gz -C ./cbt/tzdata
 rm tz.tar.gz
 sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
-sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"true"'/cbt/storage|' ./cbt/.env || true
+sed -i 's|^SERVER_BEHIND_PROXY=.*|SERVER_BEHIND_PROXY='"true"'/cbt/storage|' ./cbt/.env || true
 wget https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/startexo
 chmod +x ./startexo
 chmod +x ./cbt/main-amd64
