@@ -11,7 +11,8 @@ clear
 ## download exo cbt dan inisialisasi folder
 echo "Download Ekstraordinary"
 wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.1-linux.zip -O cbt.zip
-unzip cbt.zip -d ./cbt
+mkdir cbt
+unzip cbt.zip -d ./cbt | tee ./cbt/.unzip.log
 rm cbt.zip
 
 clear
