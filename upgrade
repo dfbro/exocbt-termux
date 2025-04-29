@@ -11,5 +11,6 @@ pg_ctl -D ./cbt/database -l ./cbt/database.log start
 sql=$(ls ./cbt/up*sql 2>/dev/null | head -n 1)
 psql -U postgres -d exo -f "$sql"
 pg_ctl -D ./cbt/database stop
+chmod +x ./cbt/main-arm64 || true
 clear
 echo "upgrade selesai"
