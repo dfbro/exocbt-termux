@@ -64,5 +64,5 @@ chmod +x ./main-arm64 || true
 if grep -q "main-arm64" ./.unzip.log; then
     proot -b $PREFIX/var/lib/proot-distro/installed-rootfs/tzdata/usr/share:/usr/share ./main-arm64
 else
-    qemu-x86_64 -L $PREFIX/var/lib/proot-distro/installed-rootfs/alpine ./main-amd64
+    qemu-x86_64 -L $PREFIX/var/lib/proot-distro/installed-rootfs/tzdata ./main-amd64
 fi
