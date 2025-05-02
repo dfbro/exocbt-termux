@@ -60,8 +60,8 @@ echo ""
 pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
 trap cleanup SIGINT SIGTERM EXIT
 chmod +x ./main-amd64
-chmod +x ./cbt/main-arm64 || true
-if grep -q "main-arm64" ./cbt/.unzip.log; then
+chmod +x ./main-arm64 || true
+if grep -q "main-arm64" ./.unzip.log; then
     proot -b $PREFIX/var/lib/proot-distro/installed-rootfs/alpine/usr/share:/usr/share ./main-arm64
 else
     qemu-x86_64 -L $PREFIX/var/lib/proot-distro/installed-rootfs/alpine ./main-amd64
