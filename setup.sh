@@ -31,8 +31,8 @@ pg_ctl -D ./cbt/database stop
 
 ## install tzdata
 clear
-pd install alpine
-pd login alpine --isolated -- apk add --update tzdata
+pd install --override-alias tzdata alpine
+pd login alpine --isolated -- tzdata add --update tzdata
 
 clear
 ## sentuhan terakhir
