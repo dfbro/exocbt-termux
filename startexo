@@ -62,7 +62,7 @@ trap cleanup SIGINT SIGTERM EXIT
 chmod +x ./main-amd64
 chmod +x ./main-arm64 || true
 if grep -q "main-arm64" ./.unzip.log; then
-    proot -b $PREFIX/var/lib/proot-distro/installed-rootfs/alpine/usr/share:/usr/share ./main-arm64
+    proot -b $PREFIX/var/lib/proot-distro/installed-rootfs/tzdata/usr/share:/usr/share ./main-arm64
 else
     qemu-x86_64 -L $PREFIX/var/lib/proot-distro/installed-rootfs/alpine ./main-amd64
 fi
