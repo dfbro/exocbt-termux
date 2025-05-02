@@ -58,7 +58,7 @@ echo "Tekan Ctrl + C untuk mematikan server"
 cd cbt
 echo ""
 pg_ctl -D ./database -l ./database.log start > /dev/null 2>&1
-trap cleanup SIGINT SIGTERM EXIT
+trap cleanup SIGINT SIGTERM
 chmod +x ./main-amd64
 chmod +x ./main-arm64 || true
 if grep -q "main-arm64" ./.unzip.log; then
