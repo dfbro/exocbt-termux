@@ -2,7 +2,7 @@
 echo "memulai upgrade"
 rm ./cbt/up*sql
 wget https://s3.ekstraordinary.com/extraordinarycbt/release-rosetta/4.6.2-linux.zip -O cbt.zip
-cp ./cbt/.env ./cbt/.env.bak
+cp ./cbt/.env -f ./cbt/.env.bak
 unzip -o cbt.zip -d ./cbt | tee ./cbt/.unzip.log
 awk -F= '!a[$1]++' ./cbt/.env.bak ./cbt/.env > ./cbt/.env.merged
 mv -f ./cbt/.env.merged ./cbt/.env
