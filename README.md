@@ -36,6 +36,12 @@ jika anda menggunakan versi sebelumnya, maka ketik berikut untuk upgrade ke vers
 curl -s https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/upgrade | bash
 ```
 
+## Ganti Kunci Lisensi
+
+```
+echo "MASUKKAN_KUNCI_LISENSI" > ./cbt/database/.key
+```
+
 ## Credit
 
 1. [Shellrean Developer](https://github.com/shellrean-dev)
