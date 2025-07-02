@@ -40,6 +40,4 @@ sed -i 's|^STORAGE_PATH=.*|STORAGE_PATH='"$PWD"'/cbt/storage|' ./cbt/.env
 sed -i 's|^SERVER_BEHIND_PROXY=.*|SERVER_BEHIND_PROXY='"true"'|' ./cbt/.env || true
 wget https://raw.githubusercontent.com/dfbro/exocbt-termux/refs/heads/main/startexo
 chmod +x ./startexo
-chmod +x ./cbt/main-amd64
-chmod +x ./cbt/main-arm64 || true
 echo "ketik ./startexo lalu enter untuk menjalankan Ekstraordinary CBT"
